@@ -14,3 +14,7 @@ Start Test
 
 End Test
     Close Browser
+
+Set Speed
+    [Arguments]    ${speed}
+    Set Selenium Speed    ${speed}s

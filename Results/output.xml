@@ -1,20 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 4.1.3 (Python 3.10.2 on win32)" generated="20220302 16:58:05.453" rpa="false" schemaversion="2">
+<robot generator="Robot 4.1.3 (Python 3.10.2 on win32)" generated="20220303 16:18:03.361" rpa="false" schemaversion="2">
 <suite id="s1" name="Frydge" source="C:\Users\miaha\Desktop\Leidos\robot\frydge\dynamic\Tests\Frydge.robot">
-<test id="s1-t1" name="Should be able to login with valid credentials">
+<test id="s1-t1" name="Set Speed">
 <kw name="Start Test" library="Common" type="SETUP">
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>about:blank</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20220302 16:58:05.707" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
-<status status="PASS" starttime="20220302 16:58:05.706" endtime="20220302 16:58:07.117"/>
+<msg timestamp="20220303 16:18:03.588" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20220303 16:18:03.588" endtime="20220303 16:18:05.157"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20220302 16:58:07.117" endtime="20220302 16:58:07.261"/>
+<status status="PASS" starttime="20220303 16:18:05.157" endtime="20220303 16:18:05.281"/>
 </kw>
-<status status="PASS" starttime="20220302 16:58:05.706" endtime="20220302 16:58:07.261"/>
+<status status="PASS" starttime="20220303 16:18:03.588" endtime="20220303 16:18:05.282"/>
+</kw>
+<kw name="Set Speed" library="Common">
+<arg>1</arg>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<arg>${speed}s</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" starttime="20220303 16:18:05.287" endtime="20220303 16:18:05.288"/>
+</kw>
+<status status="PASS" starttime="20220303 16:18:05.286" endtime="20220303 16:18:05.288"/>
+</kw>
+<kw name="End Test" library="Common" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220303 16:18:05.289" endtime="20220303 16:18:08.424"/>
+</kw>
+<status status="PASS" starttime="20220303 16:18:05.289" endtime="20220303 16:18:08.424"/>
+</kw>
+<status status="PASS" starttime="20220303 16:18:03.574" endtime="20220303 16:18:08.424"/>
+</test>
+<test id="s1-t2" name="Should be able to load the landing page">
+<kw name="Start Test" library="Common" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220303 16:18:08.428" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20220303 16:18:08.428" endtime="20220303 16:18:10.750"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220303 16:18:10.750" endtime="20220303 16:18:11.885"/>
+</kw>
+<status status="PASS" starttime="20220303 16:18:08.427" endtime="20220303 16:18:11.885"/>
+</kw>
+<kw name="Open Landing Page" library="LandingPage">
+<doc>Opens the landing page</doc>
+<kw name="Load Page" library="Landing">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220303 16:18:11.888" level="INFO">Opening url 'https://frydge.netlify.app'</msg>
+<status status="PASS" starttime="20220303 16:18:11.888" endtime="20220303 16:18:13.417"/>
+</kw>
+<status status="PASS" starttime="20220303 16:18:11.885" endtime="20220303 16:18:13.417"/>
+</kw>
+<status status="PASS" starttime="20220303 16:18:11.885" endtime="20220303 16:18:13.417"/>
+</kw>
+<kw name="Verify Landing Page" library="LandingPage">
+<doc>Verifies if main elements are present and visibile</doc>
+<kw name="Verify Title" library="Landing">
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>${LANDING_TITLE}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20220303 16:18:14.439" level="INFO">Page title is 'Frydge'.</msg>
+<status status="PASS" starttime="20220303 16:18:13.419" endtime="20220303 16:18:14.439"/>
+</kw>
+<status status="PASS" starttime="20220303 16:18:13.417" endtime="20220303 16:18:14.439"/>
+</kw>
+<kw name="Verify Image" library="Landing">
+<kw name="Page Should Contain Image" library="SeleniumLibrary">
+<arg>${LANDING_IMAGE}</arg>
+<doc>Verifies image identified by ``locator`` is found from current page.</doc>
+<msg timestamp="20220303 16:18:16.456" level="INFO">Current page contains image 'xpath://*[@id="root"]/div/div/div[3]/div/img'.</msg>
+<status status="PASS" starttime="20220303 16:18:14.439" endtime="20220303 16:18:16.456"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${LANDING_IMAGE}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 16:18:18.494" level="INFO">Element 'xpath://*[@id="root"]/div/div/div[3]/div/img' is displayed.</msg>
+<status status="PASS" starttime="20220303 16:18:16.456" endtime="20220303 16:18:18.494"/>
+</kw>
+<status status="PASS" starttime="20220303 16:18:14.439" endtime="20220303 16:18:18.494"/>
+</kw>
+<status status="PASS" starttime="20220303 16:18:13.417" endtime="20220303 16:18:18.494"/>
+</kw>
+<kw name="End Test" library="Common" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220303 16:18:18.494" endtime="20220303 16:18:21.643"/>
+</kw>
+<status status="PASS" starttime="20220303 16:18:18.494" endtime="20220303 16:18:21.644"/>
+</kw>
+<doc>This tests if the landing page loads correctly</doc>
+<tag>Landing</tag>
+<status status="PASS" starttime="20220303 16:18:08.426" endtime="20220303 16:18:21.644"/>
+</test>
+<test id="s1-t3" name="Should be able to load &quot;login&quot; page">
+<kw name="Start Test" library="Common" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220303 16:18:21.649" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20220303 16:18:21.649" endtime="20220303 16:18:24.059"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220303 16:18:24.059" endtime="20220303 16:18:25.200"/>
+</kw>
+<status status="PASS" starttime="20220303 16:18:21.648" endtime="20220303 16:18:25.200"/>
 </kw>
 <kw name="Open Login Page" library="LoginPage">
 <doc>Opens the login page</doc>
@@ -22,59 +122,340 @@
 <kw name="Go To" library="SeleniumLibrary">
 <arg>${URL}/login</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20220302 16:58:07.261" level="INFO">Opening url 'https://frydge.netlify.app/login'</msg>
-<status status="PASS" starttime="20220302 16:58:07.261" endtime="20220302 16:58:07.910"/>
+<msg timestamp="20220303 16:18:25.204" level="INFO">Opening url 'https://frydge.netlify.app/login'</msg>
+<status status="PASS" starttime="20220303 16:18:25.203" endtime="20220303 16:18:27.443"/>
 </kw>
-<status status="PASS" starttime="20220302 16:58:07.261" endtime="20220302 16:58:07.910"/>
+<status status="PASS" starttime="20220303 16:18:25.203" endtime="20220303 16:18:27.443"/>
 </kw>
-<status status="PASS" starttime="20220302 16:58:07.261" endtime="20220302 16:58:07.910"/>
+<status status="PASS" starttime="20220303 16:18:25.200" endtime="20220303 16:18:27.443"/>
+</kw>
+<kw name="Verify Login Page" library="LoginPage">
+<doc>Verifies if main elements are present and visibile</doc>
+<kw name="Verify Title" library="Login">
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>${LOGIN_TITLE}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20220303 16:18:28.455" level="INFO">Page title is 'Login'.</msg>
+<status status="PASS" starttime="20220303 16:18:27.445" endtime="20220303 16:18:28.455"/>
+</kw>
+<status status="PASS" starttime="20220303 16:18:27.443" endtime="20220303 16:18:28.455"/>
+</kw>
+<kw name="Verify Login Form" library="Login">
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${LOGIN_HEADER}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 16:18:30.486" level="INFO">Element 'xpath://*[@id="root"]/div/div/h1' is displayed.</msg>
+<status status="PASS" starttime="20220303 16:18:28.455" endtime="20220303 16:18:30.486"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${LOGIN_BUTTON}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 16:18:32.499" level="INFO">Element 'xpath://*[@id="root"]/div/div/form/div[3]/div/button' is displayed.</msg>
+<status status="PASS" starttime="20220303 16:18:30.486" endtime="20220303 16:18:32.499"/>
+</kw>
+<status status="PASS" starttime="20220303 16:18:28.455" endtime="20220303 16:18:32.499"/>
+</kw>
+<status status="PASS" starttime="20220303 16:18:27.443" endtime="20220303 16:18:32.499"/>
+</kw>
+<kw name="End Test" library="Common" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220303 16:18:32.501" endtime="20220303 16:18:35.624"/>
+</kw>
+<status status="PASS" starttime="20220303 16:18:32.499" endtime="20220303 16:18:35.624"/>
+</kw>
+<doc>This tests if the "Login" page loads correctly</doc>
+<tag>Login</tag>
+<status status="PASS" starttime="20220303 16:18:21.647" endtime="20220303 16:18:35.624"/>
+</test>
+<test id="s1-t4" name="Should not be able to login with invalid credentials">
+<kw name="Start Test" library="Common" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220303 16:18:35.631" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20220303 16:18:35.631" endtime="20220303 16:18:37.938"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220303 16:18:37.939" endtime="20220303 16:18:39.072"/>
+</kw>
+<status status="PASS" starttime="20220303 16:18:35.630" endtime="20220303 16:18:39.072"/>
+</kw>
+<kw name="Open Login Page" library="LoginPage">
+<doc>Opens the login page</doc>
+<kw name="Load Page" library="Login">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${URL}/login</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220303 16:18:39.075" level="INFO">Opening url 'https://frydge.netlify.app/login'</msg>
+<status status="PASS" starttime="20220303 16:18:39.075" endtime="20220303 16:18:41.280"/>
+</kw>
+<status status="PASS" starttime="20220303 16:18:39.072" endtime="20220303 16:18:41.280"/>
+</kw>
+<status status="PASS" starttime="20220303 16:18:39.072" endtime="20220303 16:18:41.280"/>
 </kw>
 <kw name="Fill Form" library="LoginPage">
-<arg>${VALID_USERNAME}</arg>
-<arg>${VALID_PASSWORD}</arg>
+<arg>${LOGIN_VALID_USERNAME}ABC</arg>
+<arg>${LOGIN_VALID_PASSWORD}45</arg>
 <kw name="Fill Username" library="Login">
 <arg>${username}</arg>
 <kw name="Input Text" library="SeleniumLibrary">
-<arg>${USERNAME_FIELD}</arg>
+<arg>${LOGIN_USERNAME_FIELD}</arg>
 <arg>${username}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220302 16:58:07.911" level="INFO">Typing text 'admin' into text field 'xpath://*[@id="root"]/div/div/form/div[1]/div/input'.</msg>
-<status status="PASS" starttime="20220302 16:58:07.911" endtime="20220302 16:58:08.025"/>
+<msg timestamp="20220303 16:18:41.284" level="INFO">Typing text 'adminABC' into text field 'xpath://*[@id="root"]/div/div/form/div[1]/div/input'.</msg>
+<status status="PASS" starttime="20220303 16:18:41.283" endtime="20220303 16:18:44.407"/>
 </kw>
-<status status="PASS" starttime="20220302 16:58:07.911" endtime="20220302 16:58:08.026"/>
+<status status="PASS" starttime="20220303 16:18:41.283" endtime="20220303 16:18:44.407"/>
 </kw>
 <kw name="Fill Password" library="Login">
 <arg>${password}</arg>
 <kw name="Input Password" library="SeleniumLibrary">
-<arg>${PASSWORD_FIELD}</arg>
+<arg>${LOGIN_PASSWORD_FIELD}</arg>
 <arg>${password}</arg>
 <doc>Types the given password into the text field identified by ``locator``.</doc>
-<msg timestamp="20220302 16:58:08.027" level="INFO">Typing password into text field 'xpath://*[@id="root"]/div/div/form/div[2]/div/input'.</msg>
-<msg timestamp="20220302 16:58:08.060" level="INFO">Temporally setting log level to: NONE</msg>
-<msg timestamp="20220302 16:58:08.098" level="INFO">Log level changed from NONE to INFO.</msg>
-<status status="PASS" starttime="20220302 16:58:08.027" endtime="20220302 16:58:08.098"/>
+<msg timestamp="20220303 16:18:44.407" level="INFO">Typing password into text field 'xpath://*[@id="root"]/div/div/form/div[2]/div/input'.</msg>
+<msg timestamp="20220303 16:18:46.441" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20220303 16:18:47.504" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20220303 16:18:44.407" endtime="20220303 16:18:47.504"/>
 </kw>
-<status status="PASS" starttime="20220302 16:58:08.026" endtime="20220302 16:58:08.098"/>
+<status status="PASS" starttime="20220303 16:18:44.407" endtime="20220303 16:18:47.504"/>
 </kw>
-<status status="PASS" starttime="20220302 16:58:07.911" endtime="20220302 16:58:08.098"/>
+<status status="PASS" starttime="20220303 16:18:41.280" endtime="20220303 16:18:47.504"/>
 </kw>
 <kw name="Login" library="LoginPage">
 <kw name="Click Login Button" library="Login">
 <kw name="Click Button" library="SeleniumLibrary">
 <arg>${LOGIN_BUTTON}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20220302 16:58:08.112" level="INFO">Clicking button 'xpath://*[@id="root"]/div/div/form/div[3]/div/button'.</msg>
-<status status="PASS" starttime="20220302 16:58:08.112" endtime="20220302 16:58:08.170"/>
+<msg timestamp="20220303 16:18:47.508" level="INFO">Clicking button 'xpath://*[@id="root"]/div/div/form/div[3]/div/button'.</msg>
+<status status="PASS" starttime="20220303 16:18:47.508" endtime="20220303 16:18:52.595"/>
 </kw>
-<status status="PASS" starttime="20220302 16:58:08.098" endtime="20220302 16:58:08.170"/>
+<status status="PASS" starttime="20220303 16:18:47.504" endtime="20220303 16:18:52.595"/>
 </kw>
-<status status="PASS" starttime="20220302 16:58:08.098" endtime="20220302 16:58:08.170"/>
+<status status="PASS" starttime="20220303 16:18:47.504" endtime="20220303 16:18:52.595"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>3</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220302 16:58:11.180" level="INFO">Slept 3 seconds</msg>
-<status status="PASS" starttime="20220302 16:58:08.171" endtime="20220302 16:58:11.180"/>
+<msg timestamp="20220303 16:18:55.606" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20220303 16:18:52.597" endtime="20220303 16:18:55.606"/>
+</kw>
+<kw name="Verify Login Failure" library="LoginPage">
+<kw name="Verify Title" library="Login">
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>${LOGIN_TITLE}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20220303 16:18:56.613" level="INFO">Page title is 'Login'.</msg>
+<status status="PASS" starttime="20220303 16:18:55.606" endtime="20220303 16:18:56.613"/>
+</kw>
+<status status="PASS" starttime="20220303 16:18:55.606" endtime="20220303 16:18:56.614"/>
+</kw>
+<kw name="Verify Error Message" library="Login">
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>${LOGIN_ERROR_MESSAGE}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20220303 16:18:58.650" level="INFO">Current page contains text 'Invalid username or password'.</msg>
+<status status="PASS" starttime="20220303 16:18:56.614" endtime="20220303 16:18:58.650"/>
+</kw>
+<status status="PASS" starttime="20220303 16:18:56.614" endtime="20220303 16:18:58.650"/>
+</kw>
+<status status="PASS" starttime="20220303 16:18:55.606" endtime="20220303 16:18:58.650"/>
+</kw>
+<kw name="End Test" library="Common" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220303 16:18:58.650" endtime="20220303 16:19:01.715"/>
+</kw>
+<status status="PASS" starttime="20220303 16:18:58.650" endtime="20220303 16:19:01.715"/>
+</kw>
+<doc>This tests if invalid credentials gives feedback while not allowing login</doc>
+<tag>Login</tag>
+<status status="PASS" starttime="20220303 16:18:35.628" endtime="20220303 16:19:01.715"/>
+</test>
+<test id="s1-t5" name="Should not be able to login with empty credentials">
+<kw name="Start Test" library="Common" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220303 16:19:01.715" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20220303 16:19:01.715" endtime="20220303 16:19:03.984"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220303 16:19:03.984" endtime="20220303 16:19:05.122"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:01.715" endtime="20220303 16:19:05.122"/>
+</kw>
+<kw name="Open Login Page" library="LoginPage">
+<doc>Opens the login page</doc>
+<kw name="Load Page" library="Login">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${URL}/login</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220303 16:19:05.124" level="INFO">Opening url 'https://frydge.netlify.app/login'</msg>
+<status status="PASS" starttime="20220303 16:19:05.124" endtime="20220303 16:19:06.630"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:05.124" endtime="20220303 16:19:06.630"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:05.122" endtime="20220303 16:19:06.630"/>
+</kw>
+<kw name="Fill Form" library="LoginPage">
+<arg>${EMPTY}</arg>
+<arg>${EMPTY}</arg>
+<kw name="Fill Username" library="Login">
+<arg>${username}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${LOGIN_USERNAME_FIELD}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220303 16:19:06.633" level="INFO">Typing text '' into text field 'xpath://*[@id="root"]/div/div/form/div[1]/div/input'.</msg>
+<status status="PASS" starttime="20220303 16:19:06.633" endtime="20220303 16:19:09.719"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:06.633" endtime="20220303 16:19:09.719"/>
+</kw>
+<kw name="Fill Password" library="Login">
+<arg>${password}</arg>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${LOGIN_PASSWORD_FIELD}</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20220303 16:19:09.719" level="INFO">Typing password into text field 'xpath://*[@id="root"]/div/div/form/div[2]/div/input'.</msg>
+<msg timestamp="20220303 16:19:11.768" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20220303 16:19:12.812" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20220303 16:19:09.719" endtime="20220303 16:19:12.812"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:09.719" endtime="20220303 16:19:12.812"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:06.630" endtime="20220303 16:19:12.812"/>
+</kw>
+<kw name="Login" library="LoginPage">
+<kw name="Click Login Button" library="Login">
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${LOGIN_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220303 16:19:12.814" level="INFO">Clicking button 'xpath://*[@id="root"]/div/div/form/div[3]/div/button'.</msg>
+<status status="PASS" starttime="20220303 16:19:12.814" endtime="20220303 16:19:17.886"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:12.812" endtime="20220303 16:19:17.886"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:12.812" endtime="20220303 16:19:17.886"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 16:19:20.896" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20220303 16:19:17.886" endtime="20220303 16:19:20.896"/>
+</kw>
+<kw name="Verify Login Failure" library="LoginPage">
+<kw name="Verify Title" library="Login">
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>${LOGIN_TITLE}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20220303 16:19:21.901" level="INFO">Page title is 'Login'.</msg>
+<status status="PASS" starttime="20220303 16:19:20.896" endtime="20220303 16:19:21.901"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:20.896" endtime="20220303 16:19:21.901"/>
+</kw>
+<kw name="Verify Error Message" library="Login">
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>${LOGIN_ERROR_MESSAGE}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20220303 16:19:23.937" level="INFO">Current page contains text 'Invalid username or password'.</msg>
+<status status="PASS" starttime="20220303 16:19:21.901" endtime="20220303 16:19:23.937"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:21.901" endtime="20220303 16:19:23.937"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:20.896" endtime="20220303 16:19:23.937"/>
+</kw>
+<kw name="End Test" library="Common" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220303 16:19:23.937" endtime="20220303 16:19:27.020"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:23.937" endtime="20220303 16:19:27.020"/>
+</kw>
+<doc>This tests if empty credentials gives feedback while not allowing login</doc>
+<tag>Login</tag>
+<status status="PASS" starttime="20220303 16:19:01.715" endtime="20220303 16:19:27.020"/>
+</test>
+<test id="s1-t6" name="Should be able to login with valid credentials">
+<kw name="Start Test" library="Common" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220303 16:19:27.020" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20220303 16:19:27.020" endtime="20220303 16:19:29.342"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220303 16:19:29.342" endtime="20220303 16:19:30.479"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:27.020" endtime="20220303 16:19:30.479"/>
+</kw>
+<kw name="Open Login Page" library="LoginPage">
+<doc>Opens the login page</doc>
+<kw name="Load Page" library="Login">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${URL}/login</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220303 16:19:30.481" level="INFO">Opening url 'https://frydge.netlify.app/login'</msg>
+<status status="PASS" starttime="20220303 16:19:30.481" endtime="20220303 16:19:32.006"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:30.479" endtime="20220303 16:19:32.006"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:30.479" endtime="20220303 16:19:32.006"/>
+</kw>
+<kw name="Fill Form" library="LoginPage">
+<arg>${LOGIN_VALID_USERNAME}</arg>
+<arg>${LOGIN_VALID_PASSWORD}</arg>
+<kw name="Fill Username" library="Login">
+<arg>${username}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${LOGIN_USERNAME_FIELD}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220303 16:19:32.008" level="INFO">Typing text 'admin' into text field 'xpath://*[@id="root"]/div/div/form/div[1]/div/input'.</msg>
+<status status="PASS" starttime="20220303 16:19:32.008" endtime="20220303 16:19:35.109"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:32.008" endtime="20220303 16:19:35.109"/>
+</kw>
+<kw name="Fill Password" library="Login">
+<arg>${password}</arg>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${LOGIN_PASSWORD_FIELD}</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20220303 16:19:35.109" level="INFO">Typing password into text field 'xpath://*[@id="root"]/div/div/form/div[2]/div/input'.</msg>
+<msg timestamp="20220303 16:19:37.161" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20220303 16:19:38.221" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20220303 16:19:35.109" endtime="20220303 16:19:38.221"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:35.109" endtime="20220303 16:19:38.221"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:32.007" endtime="20220303 16:19:38.221"/>
+</kw>
+<kw name="Login" library="LoginPage">
+<kw name="Click Login Button" library="Login">
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${LOGIN_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220303 16:19:38.224" level="INFO">Clicking button 'xpath://*[@id="root"]/div/div/form/div[3]/div/button'.</msg>
+<status status="PASS" starttime="20220303 16:19:38.224" endtime="20220303 16:19:43.301"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:38.221" endtime="20220303 16:19:43.301"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:38.221" endtime="20220303 16:19:43.301"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 16:19:46.309" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20220303 16:19:43.301" endtime="20220303 16:19:46.309"/>
 </kw>
 <kw name="Verify Login Success" library="LoginPage">
 <kw name="Verify Auth Token" library="Login">
@@ -82,61 +463,552 @@
 <var>${token}</var>
 <arg>return window.localStorage.getItem("token");</arg>
 <doc>Executes the given JavaScript code with possible arguments.</doc>
-<msg timestamp="20220302 16:58:11.182" level="INFO">Executing JavaScript:
+<msg timestamp="20220303 16:19:46.309" level="INFO">Executing JavaScript:
 return window.localStorage.getItem("token");
 Without any arguments.</msg>
-<msg timestamp="20220302 16:58:11.187" level="INFO">${token} = 7b3632c1ed4f631a7fa0ed5eb29cca5567d5e0b9</msg>
-<status status="PASS" starttime="20220302 16:58:11.182" endtime="20220302 16:58:11.187"/>
+<msg timestamp="20220303 16:19:47.315" level="INFO">${token} = 7b3632c1ed4f631a7fa0ed5eb29cca5567d5e0b9</msg>
+<status status="PASS" starttime="20220303 16:19:46.309" endtime="20220303 16:19:47.315"/>
 </kw>
 <kw name="Should Not Be Equal As Strings" library="BuiltIn">
 <arg>${token}</arg>
 <arg>None</arg>
 <doc>Fails if objects are equal after converting them to strings.</doc>
-<status status="PASS" starttime="20220302 16:58:11.187" endtime="20220302 16:58:11.188"/>
+<status status="PASS" starttime="20220303 16:19:47.315" endtime="20220303 16:19:47.315"/>
 </kw>
-<status status="PASS" starttime="20220302 16:58:11.180" endtime="20220302 16:58:11.188"/>
+<status status="PASS" starttime="20220303 16:19:46.309" endtime="20220303 16:19:47.315"/>
 </kw>
 <kw name="Verify Not In Login Page Anymore" library="Login">
 <kw name="Get Title" library="SeleniumLibrary">
 <var>${title}</var>
 <doc>Returns the title of the current page.</doc>
-<msg timestamp="20220302 16:58:11.192" level="INFO">${title} = Home</msg>
-<status status="PASS" starttime="20220302 16:58:11.188" endtime="20220302 16:58:11.192"/>
+<msg timestamp="20220303 16:19:48.323" level="INFO">${title} = Home</msg>
+<status status="PASS" starttime="20220303 16:19:47.315" endtime="20220303 16:19:48.323"/>
 </kw>
 <kw name="Should Not Be Equal As Strings" library="BuiltIn">
 <arg>${title}</arg>
 <arg>${LOGIN_TITLE}</arg>
 <doc>Fails if objects are equal after converting them to strings.</doc>
-<status status="PASS" starttime="20220302 16:58:11.193" endtime="20220302 16:58:11.193"/>
+<status status="PASS" starttime="20220303 16:19:48.323" endtime="20220303 16:19:48.323"/>
 </kw>
-<status status="PASS" starttime="20220302 16:58:11.188" endtime="20220302 16:58:11.193"/>
+<status status="PASS" starttime="20220303 16:19:47.315" endtime="20220303 16:19:48.323"/>
 </kw>
-<status status="PASS" starttime="20220302 16:58:11.180" endtime="20220302 16:58:11.193"/>
+<status status="PASS" starttime="20220303 16:19:46.309" endtime="20220303 16:19:48.323"/>
 </kw>
 <kw name="End Test" library="Common" type="TEARDOWN">
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20220302 16:58:11.194" endtime="20220302 16:58:13.475"/>
+<status status="PASS" starttime="20220303 16:19:48.323" endtime="20220303 16:19:51.399"/>
 </kw>
-<status status="PASS" starttime="20220302 16:58:11.193" endtime="20220302 16:58:13.475"/>
+<status status="PASS" starttime="20220303 16:19:48.323" endtime="20220303 16:19:51.399"/>
 </kw>
 <doc>This tests if valid credentials gives access to the Home page</doc>
-<tag>Current</tag>
 <tag>Login</tag>
-<status status="PASS" starttime="20220302 16:58:05.705" endtime="20220302 16:58:13.475"/>
+<status status="PASS" starttime="20220303 16:19:27.020" endtime="20220303 16:19:51.399"/>
 </test>
-<status status="PASS" starttime="20220302 16:58:05.453" endtime="20220302 16:58:13.480"/>
+<test id="s1-t7" name="Should be able to load &quot;register&quot; page">
+<kw name="Start Test" library="Common" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220303 16:19:51.399" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20220303 16:19:51.399" endtime="20220303 16:19:53.666"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220303 16:19:53.666" endtime="20220303 16:19:54.802"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:51.399" endtime="20220303 16:19:54.802"/>
+</kw>
+<kw name="Open Register Page" library="RegisterPage">
+<doc>This opens the the "register" page</doc>
+<kw name="Load Page" library="Register">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${URL}/register</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220303 16:19:54.804" level="INFO">Opening url 'https://frydge.netlify.app/register'</msg>
+<status status="PASS" starttime="20220303 16:19:54.804" endtime="20220303 16:19:56.297"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:54.802" endtime="20220303 16:19:56.297"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:54.802" endtime="20220303 16:19:56.297"/>
+</kw>
+<kw name="Verify Register Page" library="RegisterPage">
+<doc>This tests if some of the elements are visibile or present</doc>
+<kw name="Verify Title" library="Register">
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>${REGISTER_TITLE}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20220303 16:19:57.318" level="INFO">Page title is 'Register'.</msg>
+<status status="PASS" starttime="20220303 16:19:56.299" endtime="20220303 16:19:57.318"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:56.297" endtime="20220303 16:19:57.318"/>
+</kw>
+<kw name="Verify Register Form" library="Register">
+<doc>This checks if all the form fields are visible</doc>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${REGISTER_USERNAME_FIELD}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 16:19:59.328" level="INFO">Element 'xpath://*[@id="root"]/div/div/form/div[1]/div/input' is displayed.</msg>
+<status status="PASS" starttime="20220303 16:19:57.318" endtime="20220303 16:19:59.328"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${REGISTER_EMAIL_FIELD}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 16:20:01.363" level="INFO">Element 'xpath://*[@id="root"]/div/div/form/div[2]/div/input' is displayed.</msg>
+<status status="PASS" starttime="20220303 16:19:59.328" endtime="20220303 16:20:01.363"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${REGISTER_PASSWORD_FIELD}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 16:20:03.376" level="INFO">Element 'xpath://*[@id="root"]/div/div/form/div[3]/div/input' is displayed.</msg>
+<status status="PASS" starttime="20220303 16:20:01.363" endtime="20220303 16:20:03.377"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${REGISTER_CONFIRM_PASSWORD_FIELD}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 16:20:05.411" level="INFO">Element 'xpath://*[@id="root"]/div/div/form/div[4]/div/input' is displayed.</msg>
+<status status="PASS" starttime="20220303 16:20:03.377" endtime="20220303 16:20:05.411"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${REGISTER_BUTTON}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 16:20:07.425" level="INFO">Element 'xpath://*[@id="root"]/div/div/form/div[5]/div/button' is displayed.</msg>
+<status status="PASS" starttime="20220303 16:20:05.411" endtime="20220303 16:20:07.425"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${FORM_TITLE_ELEMENT}</arg>
+<arg>${REGISTER_TITLE}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220303 16:20:07.425" level="INFO">Verifying element 'xpath://*[@id="root"]/div/div/h1' contains exact text 'Register'.</msg>
+<status status="PASS" starttime="20220303 16:20:07.425" endtime="20220303 16:20:09.460"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:57.318" endtime="20220303 16:20:09.460"/>
+</kw>
+<status status="PASS" starttime="20220303 16:19:56.297" endtime="20220303 16:20:09.460"/>
+</kw>
+<kw name="End Test" library="Common" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220303 16:20:09.460" endtime="20220303 16:20:12.510"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:09.460" endtime="20220303 16:20:12.510"/>
+</kw>
+<doc>This tests if the "register" page load correctly</doc>
+<tag>Register</tag>
+<status status="PASS" starttime="20220303 16:19:51.399" endtime="20220303 16:20:12.510"/>
+</test>
+<test id="s1-t8" name="Should not be able to register with invalid details">
+<kw name="Start Test" library="Common" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220303 16:20:12.510" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20220303 16:20:12.510" endtime="20220303 16:20:14.831"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220303 16:20:14.831" endtime="20220303 16:20:15.961"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:12.510" endtime="20220303 16:20:15.961"/>
+</kw>
+<kw name="Open Register Page" library="RegisterPage">
+<doc>This opens the the "register" page</doc>
+<kw name="Load Page" library="Register">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${URL}/register</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220303 16:20:15.963" level="INFO">Opening url 'https://frydge.netlify.app/register'</msg>
+<status status="PASS" starttime="20220303 16:20:15.963" endtime="20220303 16:20:17.612"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:15.961" endtime="20220303 16:20:17.612"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:15.961" endtime="20220303 16:20:17.612"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${random_username}</var>
+<arg>3</arg>
+<arg>[LETTERS][NUMBERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20220303 16:20:17.612" level="INFO">${random_username} = qSU</msg>
+<status status="PASS" starttime="20220303 16:20:17.612" endtime="20220303 16:20:17.612"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${random_email}</var>
+<arg>5</arg>
+<arg>[LETTERS][NUMBERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20220303 16:20:17.615" level="INFO">${random_email} = IlEsb</msg>
+<status status="PASS" starttime="20220303 16:20:17.615" endtime="20220303 16:20:17.615"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${random_password}</var>
+<arg>6</arg>
+<arg>[LETTERS][NUMBERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20220303 16:20:17.616" level="INFO">${random_password} = 73ZcJa</msg>
+<status status="PASS" starttime="20220303 16:20:17.616" endtime="20220303 16:20:17.616"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${random_confirm_password}</var>
+<arg>7</arg>
+<arg>[LETTERS][NUMBERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20220303 16:20:17.617" level="INFO">${random_confirm_password} = FQxLDH1</msg>
+<status status="PASS" starttime="20220303 16:20:17.616" endtime="20220303 16:20:17.617"/>
+</kw>
+<kw name="Fill Form" library="RegisterPage">
+<arg>${random_username}</arg>
+<arg>${random_email}</arg>
+<arg>${random_password}</arg>
+<arg>${random_confirm_password}</arg>
+<doc>This fills the registration form</doc>
+<kw name="Fill Username" library="Register">
+<arg>${username}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${REGISTER_USERNAME_FIELD}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220303 16:20:17.618" level="INFO">Typing text 'qSU' into text field 'xpath://*[@id="root"]/div/div/form/div[1]/div/input'.</msg>
+<status status="PASS" starttime="20220303 16:20:17.618" endtime="20220303 16:20:20.705"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:17.618" endtime="20220303 16:20:20.705"/>
+</kw>
+<kw name="Fill Email" library="Register">
+<arg>${email}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${REGISTER_EMAIL_FIELD}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220303 16:20:20.705" level="INFO">Typing text 'IlEsb' into text field 'xpath://*[@id="root"]/div/div/form/div[2]/div/input'.</msg>
+<status status="PASS" starttime="20220303 16:20:20.705" endtime="20220303 16:20:23.804"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:20.705" endtime="20220303 16:20:23.804"/>
+</kw>
+<kw name="Fill Password" library="Register">
+<arg>${password}</arg>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${REGISTER_PASSWORD_FIELD}</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20220303 16:20:23.804" level="INFO">Typing password into text field 'xpath://*[@id="root"]/div/div/form/div[3]/div/input'.</msg>
+<msg timestamp="20220303 16:20:25.868" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20220303 16:20:26.927" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20220303 16:20:23.804" endtime="20220303 16:20:26.927"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:23.804" endtime="20220303 16:20:26.927"/>
+</kw>
+<kw name="Fill Confirm Password" library="Register">
+<arg>${confirm_password}</arg>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${REGISTER_CONFIRM_PASSWORD_FIELD}</arg>
+<arg>${confirm_password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20220303 16:20:26.927" level="INFO">Typing password into text field 'xpath://*[@id="root"]/div/div/form/div[4]/div/input'.</msg>
+<msg timestamp="20220303 16:20:28.962" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20220303 16:20:30.021" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20220303 16:20:26.927" endtime="20220303 16:20:30.021"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:26.927" endtime="20220303 16:20:30.021"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:17.617" endtime="20220303 16:20:30.021"/>
+</kw>
+<kw name="Register" library="RegisterPage">
+<doc>User registration</doc>
+<kw name="Click Register Button" library="Register">
+<doc>Clicks the registration button to submit the form</doc>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${REGISTER_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220303 16:20:30.021" level="INFO">Clicking button 'xpath://*[@id="root"]/div/div/form/div[5]/div/button'.</msg>
+<status status="PASS" starttime="20220303 16:20:30.021" endtime="20220303 16:20:35.082"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:30.021" endtime="20220303 16:20:35.082"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:30.021" endtime="20220303 16:20:35.082"/>
+</kw>
+<kw name="Verify Registeration Failure" library="RegisterPage">
+<doc>This tests if the registration has failed and checks for error messages</doc>
+<kw name="Verify Title" library="Register">
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>${REGISTER_TITLE}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20220303 16:20:36.090" level="INFO">Page title is 'Register'.</msg>
+<status status="PASS" starttime="20220303 16:20:35.082" endtime="20220303 16:20:36.090"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:35.082" endtime="20220303 16:20:36.090"/>
+</kw>
+<kw name="Verify Error Messages" library="Register">
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${REGISTER_ERROR_ELEMENT}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 16:20:38.119" level="INFO">Element 'xpath://*[@id="root"]/div/div/h3[1]' is displayed.</msg>
+<status status="PASS" starttime="20220303 16:20:36.090" endtime="20220303 16:20:38.119"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:36.090" endtime="20220303 16:20:38.119"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:35.082" endtime="20220303 16:20:38.119"/>
+</kw>
+<kw name="End Test" library="Common" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220303 16:20:38.119" endtime="20220303 16:20:41.191"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:38.119" endtime="20220303 16:20:41.191"/>
+</kw>
+<doc>This tests if the user is prevented in registering with invalid details (not matching pass, invalid email, etcc..)</doc>
+<tag>Register</tag>
+<status status="PASS" starttime="20220303 16:20:12.510" endtime="20220303 16:20:41.191"/>
+</test>
+<test id="s1-t9" name="Should be able to register with valid details">
+<kw name="Start Test" library="Common" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220303 16:20:41.191" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20220303 16:20:41.191" endtime="20220303 16:20:43.517"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220303 16:20:43.517" endtime="20220303 16:20:44.650"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:41.191" endtime="20220303 16:20:44.650"/>
+</kw>
+<kw name="Open Register Page" library="RegisterPage">
+<doc>This opens the the "register" page</doc>
+<kw name="Load Page" library="Register">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${URL}/register</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220303 16:20:44.652" level="INFO">Opening url 'https://frydge.netlify.app/register'</msg>
+<status status="PASS" starttime="20220303 16:20:44.652" endtime="20220303 16:20:46.190"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:44.650" endtime="20220303 16:20:46.190"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:44.650" endtime="20220303 16:20:46.190"/>
+</kw>
+<kw name="Fill Form" library="RegisterPage">
+<arg>${REGISTER_VALID_USERNAME}</arg>
+<arg>${REGISTER_VALID_EMAIL}</arg>
+<arg>${REGISTER_VALID_PASSWORD}</arg>
+<arg>${REGISTER_VALID_CONFIRM_PASSWORD}</arg>
+<doc>This fills the registration form</doc>
+<kw name="Fill Username" library="Register">
+<arg>${username}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${REGISTER_USERNAME_FIELD}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220303 16:20:46.194" level="INFO">Typing text 'arafath666' into text field 'xpath://*[@id="root"]/div/div/form/div[1]/div/input'.</msg>
+<status status="PASS" starttime="20220303 16:20:46.194" endtime="20220303 16:20:49.340"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:46.193" endtime="20220303 16:20:49.340"/>
+</kw>
+<kw name="Fill Email" library="Register">
+<arg>${email}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${REGISTER_EMAIL_FIELD}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220303 16:20:49.340" level="INFO">Typing text 'arafath856@gmail.com' into text field 'xpath://*[@id="root"]/div/div/form/div[2]/div/input'.</msg>
+<status status="PASS" starttime="20220303 16:20:49.340" endtime="20220303 16:20:52.468"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:49.340" endtime="20220303 16:20:52.468"/>
+</kw>
+<kw name="Fill Password" library="Register">
+<arg>${password}</arg>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${REGISTER_PASSWORD_FIELD}</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20220303 16:20:52.468" level="INFO">Typing password into text field 'xpath://*[@id="root"]/div/div/form/div[3]/div/input'.</msg>
+<msg timestamp="20220303 16:20:54.524" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20220303 16:20:55.597" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20220303 16:20:52.468" endtime="20220303 16:20:55.597"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:52.468" endtime="20220303 16:20:55.597"/>
+</kw>
+<kw name="Fill Confirm Password" library="Register">
+<arg>${confirm_password}</arg>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${REGISTER_CONFIRM_PASSWORD_FIELD}</arg>
+<arg>${confirm_password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20220303 16:20:55.597" level="INFO">Typing password into text field 'xpath://*[@id="root"]/div/div/form/div[4]/div/input'.</msg>
+<msg timestamp="20220303 16:20:57.648" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20220303 16:20:58.714" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20220303 16:20:55.597" endtime="20220303 16:20:58.715"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:55.597" endtime="20220303 16:20:58.715"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:46.190" endtime="20220303 16:20:58.715"/>
+</kw>
+<kw name="Register" library="RegisterPage">
+<doc>User registration</doc>
+<kw name="Click Register Button" library="Register">
+<doc>Clicks the registration button to submit the form</doc>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${REGISTER_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220303 16:20:58.715" level="INFO">Clicking button 'xpath://*[@id="root"]/div/div/form/div[5]/div/button'.</msg>
+<status status="PASS" starttime="20220303 16:20:58.715" endtime="20220303 16:21:03.801"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:58.715" endtime="20220303 16:21:03.801"/>
+</kw>
+<status status="PASS" starttime="20220303 16:20:58.715" endtime="20220303 16:21:03.801"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 16:21:06.805" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20220303 16:21:03.801" endtime="20220303 16:21:06.805"/>
+</kw>
+<kw name="Verify Registration Success" library="RegisterPage">
+<arg>${REGISTER_VALID_USERNAME}</arg>
+<arg>${REGISTER_VALID_PASSWORD}</arg>
+<doc>This tests if user has been redirected to login page and can login with the newly created username and password</doc>
+<kw name="Verify Login Page" library="LoginPage">
+<doc>Verifies if main elements are present and visibile</doc>
+<kw name="Verify Title" library="Login">
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>${LOGIN_TITLE}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20220303 16:21:07.811" level="INFO">Page title is 'Login'.</msg>
+<status status="PASS" starttime="20220303 16:21:06.805" endtime="20220303 16:21:07.811"/>
+</kw>
+<status status="PASS" starttime="20220303 16:21:06.805" endtime="20220303 16:21:07.811"/>
+</kw>
+<kw name="Verify Login Form" library="Login">
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${LOGIN_HEADER}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 16:21:09.860" level="INFO">Element 'xpath://*[@id="root"]/div/div/h1' is displayed.</msg>
+<status status="PASS" starttime="20220303 16:21:07.811" endtime="20220303 16:21:09.860"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${LOGIN_BUTTON}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220303 16:21:11.890" level="INFO">Element 'xpath://*[@id="root"]/div/div/form/div[3]/div/button' is displayed.</msg>
+<status status="PASS" starttime="20220303 16:21:09.860" endtime="20220303 16:21:11.890"/>
+</kw>
+<status status="PASS" starttime="20220303 16:21:07.811" endtime="20220303 16:21:11.890"/>
+</kw>
+<status status="PASS" starttime="20220303 16:21:06.805" endtime="20220303 16:21:11.890"/>
+</kw>
+<kw name="Fill Form" library="LoginPage">
+<arg>${username}</arg>
+<arg>${password}</arg>
+<kw name="Fill Username" library="Login">
+<arg>${username}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${LOGIN_USERNAME_FIELD}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220303 16:21:11.890" level="INFO">Typing text 'arafath666' into text field 'xpath://*[@id="root"]/div/div/form/div[1]/div/input'.</msg>
+<status status="PASS" starttime="20220303 16:21:11.890" endtime="20220303 16:21:14.998"/>
+</kw>
+<status status="PASS" starttime="20220303 16:21:11.890" endtime="20220303 16:21:14.998"/>
+</kw>
+<kw name="Fill Password" library="Login">
+<arg>${password}</arg>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${LOGIN_PASSWORD_FIELD}</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20220303 16:21:14.998" level="INFO">Typing password into text field 'xpath://*[@id="root"]/div/div/form/div[2]/div/input'.</msg>
+<msg timestamp="20220303 16:21:17.034" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20220303 16:21:18.094" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20220303 16:21:14.998" endtime="20220303 16:21:18.094"/>
+</kw>
+<status status="PASS" starttime="20220303 16:21:14.998" endtime="20220303 16:21:18.094"/>
+</kw>
+<status status="PASS" starttime="20220303 16:21:11.890" endtime="20220303 16:21:18.094"/>
+</kw>
+<kw name="Login" library="LoginPage">
+<kw name="Click Login Button" library="Login">
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${LOGIN_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220303 16:21:18.094" level="INFO">Clicking button 'xpath://*[@id="root"]/div/div/form/div[3]/div/button'.</msg>
+<status status="PASS" starttime="20220303 16:21:18.094" endtime="20220303 16:21:23.165"/>
+</kw>
+<status status="PASS" starttime="20220303 16:21:18.094" endtime="20220303 16:21:23.165"/>
+</kw>
+<status status="PASS" starttime="20220303 16:21:18.094" endtime="20220303 16:21:23.165"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220303 16:21:26.165" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20220303 16:21:23.165" endtime="20220303 16:21:26.165"/>
+</kw>
+<kw name="Verify Login Success" library="LoginPage">
+<kw name="Verify Auth Token" library="Login">
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<var>${token}</var>
+<arg>return window.localStorage.getItem("token");</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20220303 16:21:26.165" level="INFO">Executing JavaScript:
+return window.localStorage.getItem("token");
+Without any arguments.</msg>
+<msg timestamp="20220303 16:21:27.172" level="INFO">${token} = c67916197bd4984714e179bce5801919ef96ce29</msg>
+<status status="PASS" starttime="20220303 16:21:26.165" endtime="20220303 16:21:27.172"/>
+</kw>
+<kw name="Should Not Be Equal As Strings" library="BuiltIn">
+<arg>${token}</arg>
+<arg>None</arg>
+<doc>Fails if objects are equal after converting them to strings.</doc>
+<status status="PASS" starttime="20220303 16:21:27.172" endtime="20220303 16:21:27.172"/>
+</kw>
+<status status="PASS" starttime="20220303 16:21:26.165" endtime="20220303 16:21:27.172"/>
+</kw>
+<kw name="Verify Not In Login Page Anymore" library="Login">
+<kw name="Get Title" library="SeleniumLibrary">
+<var>${title}</var>
+<doc>Returns the title of the current page.</doc>
+<msg timestamp="20220303 16:21:28.179" level="INFO">${title} = Home</msg>
+<status status="PASS" starttime="20220303 16:21:27.172" endtime="20220303 16:21:28.179"/>
+</kw>
+<kw name="Should Not Be Equal As Strings" library="BuiltIn">
+<arg>${title}</arg>
+<arg>${LOGIN_TITLE}</arg>
+<doc>Fails if objects are equal after converting them to strings.</doc>
+<status status="PASS" starttime="20220303 16:21:28.179" endtime="20220303 16:21:28.179"/>
+</kw>
+<status status="PASS" starttime="20220303 16:21:27.172" endtime="20220303 16:21:28.179"/>
+</kw>
+<status status="PASS" starttime="20220303 16:21:26.165" endtime="20220303 16:21:28.179"/>
+</kw>
+<status status="PASS" starttime="20220303 16:21:06.805" endtime="20220303 16:21:28.179"/>
+</kw>
+<kw name="End Test" library="Common" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220303 16:21:28.179" endtime="20220303 16:21:31.283"/>
+</kw>
+<status status="PASS" starttime="20220303 16:21:28.179" endtime="20220303 16:21:31.283"/>
+</kw>
+<doc>This tests if the user can register using valid details</doc>
+<tag>Current</tag>
+<tag>Register</tag>
+<status status="PASS" starttime="20220303 16:20:41.191" endtime="20220303 16:21:31.283"/>
+</test>
+<status status="PASS" starttime="20220303 16:18:03.361" endtime="20220303 16:21:31.283"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="9" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 <stat pass="1" fail="0" skip="0">Current</stat>
-<stat pass="1" fail="0" skip="0">Login</stat>
+<stat pass="1" fail="0" skip="0">Landing</stat>
+<stat pass="4" fail="0" skip="0">Login</stat>
+<stat pass="3" fail="0" skip="0">Register</stat>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Frydge">Frydge</stat>
+<stat pass="9" fail="0" skip="0" id="s1" name="Frydge">Frydge</stat>
 </suite>
 </statistics>
 <errors>
